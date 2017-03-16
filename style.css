@@ -1,0 +1,196 @@
+/*
+Theme Name:   Baekewiese kaakeli
+Theme URI:    https://github.com/BK-bund/Baekewiese-Webpage
+Description:  A theme for the baekewiese Webpage based on kaakeli
+Author:       Ben Schumacher
+Author URI:   https://github.com/BenSchumacher-cjf
+Template:     kaakeli
+License:      Apache License
+License URI:  https://www.apache.org/licenses/
+Version:      0.1
+*/
+
+/*
+.btn-home {
+  background-color: #acbad5;
+}
+*/
+
+.btn-wiese {
+  color: #fff;
+  background-color: #8ace00;
+  border-color: #8ace00;
+}
+
+/********************/
+/******* Home *******/
+/********************/
+img.banner {
+  width: 380px;
+}
+
+.bgimage-baekewiese {
+  background-image: url("/wp-content/uploads/static/10_Baekewiese.jpg");
+  padding-bottom: 44%;
+}
+
+.bgimage-gelaende {
+  background-image: url("/wp-content/uploads/static/10_Lageplan-01.png");
+  padding-bottom: 68%;
+  background-position: right bottom;
+}
+
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav li.active {
+    background-color: #3ab200;
+  }
+}
+
+@media (min-width: 1200px) {
+  .fullpannel {
+    margin-left: -10vw;
+    margin-right: -10vw;
+  }
+}
+
+.carousel-fade .carousel-inner .item  {
+    transition-property: opacity;
+}
+
+.carousel-fade .carousel-inner .item,
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner  .active.right {
+    opacity: 0;
+}
+
+.carousel-fade .carousel-inner .active,
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+    opacity: 1;
+}
+
+.carousel-fade .carousel-inner .next,
+.carousel-fade .carousel-inner .prev,
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+    left: 0;
+    transform: translate3d(0, 0, 0);
+}
+    
+.carousel-fade .carousel-control {
+  z-index: 2;
+}
+
+
+.home-bk-thumb {
+  margin: auto;
+  max-width: 100%;
+  max-height: 81%;
+  border: 1px solid #999999;
+}
+
+div.home-logo-wrapper {
+  position: relative;
+  margin: auto;
+  width: 300px;
+  display: inline-block;
+}
+
+div.home-logo-img-wrapper {
+  float: left;
+  width: 40%;
+}
+
+img.home-logo {
+  height: auto;
+  margin: auto;
+}
+
+img.home-logo-baekewiese {
+  width: 98px;
+}
+
+img.home-logo-weidenkirche {
+  width: 106px;
+}
+
+img.home-logo-rappoltengruen {
+  width: 109px;
+}
+
+.logo-caption {
+  font-size: 25px;
+  font-family: quadraat-regular;
+  margin: 0;
+  float:left;
+  position: absolute;
+  top: 35%;
+  left: 43%;
+}
+
+.karten-wrapper-breit > .karten-wrapper-inner {
+  margin: 0;
+}
+
+.karten-wrapper-breit > .karten-wrapper-inner > div {
+  height: 100%;
+}
+}
+
+.gm-style-iw * {
+    display: block;
+    width: auto;
+}
+
+.gm-style-iw h4, .gm-style-iw p {
+    margin: 0;
+    padding: 0;
+}
+
+.gm-style-iw a {
+    color: #4272db;
+}
+
+@media (max-width: 767px) {
+  .row>.karten-container:nth-child(even) {
+    background-color: #d9d9d9;
+  }
+  
+  .row>.karten-container:nth-child(odd)>.reiter-wrapper-home>.reiter-weis {
+    border-bottom: 30px solid #d9d9d9; 
+  }
+
+  .row>.karten-container:nth-child(odd)>.reiter-wrapper-home>.reiter-weis > * {
+    background-color: #d9d9d9;
+  }
+
+  .row>.karten-container:nth-child(odd)>.karten-wrapper {
+    background-color: #d9d9d9;
+  }
+}
+
+
+.logo-container {
+  height: 200px;
+}
+
+.logo-container div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.logo-container img {
+  max-height: 100%;
+}
+
+/*
+@media (max-width: 767px) {
+  .logo-container {
+    margin: 100px 0;
+    height: auto;
+    display: -webkit-box;
+  }
+}
+*/
