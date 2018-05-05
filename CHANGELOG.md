@@ -1,5 +1,4 @@
 # Changelog
 
-## 0.1
-- First draft
-
+## 1.0.0
+- First stable version
