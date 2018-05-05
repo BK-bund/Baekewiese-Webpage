@@ -7,14 +7,12 @@ Author URI:   https://github.com/BenSchumacher-cjf
 Template:     kaakeli
 License:      Apache License
 License URI:  https://www.apache.org/licenses/
-Version:      0.1
+Version:      1.0.0
 */
 
-/*
-.btn-home {
-  background-color: #acbad5;
-}
-*/
+/********************/
+/****** Utils *******/
+/********************/
 
 .warning-text {
   color: #cc0000;
@@ -31,15 +29,22 @@ Version:      0.1
 }
 
 .sticky-bottom {
-	position: absolute;
-	bottom: 0;
+  position: absolute;
+  bottom: 0;
 }
+
+
+/********************/
+/****** Header ******/
+/********************/
+img.banner {
+  width: 380px;
+}
+
 
 /********************/
 /******* Home *******/
 /********************/
-
-
 .karten-wrapper {
   height: 630px;
   background-color: #edffdd;
@@ -110,16 +115,48 @@ Version:      0.1
   .reiter-wrapper-home-weidenkirche .reiter-weis * {
     background-color: #ffffff !important;;
   }
+  .navbar-default .navbar-nav li.active {
+    background-color: #3ab200;
+  }
 }
 
-img.banner {
-  width: 380px;
+@media (min-width: 1200px) {
+  .fullpannel {
+    margin-left: -10vw;
+    margin-right: -10vw;
+  }
 }
 
-/********************/
-/******* Home *******/
-/********************/
+.karten-wrapper-breit > .karten-wrapper-inner {
+  margin: 0;
+}
 
+.karten-wrapper-breit > .karten-wrapper-inner > div {
+  height: 100%;
+}
+
+@media (max-width: 767px) {
+  .row>.karten-container:nth-child(even) {
+    background-color: #d9d9d9;
+  }
+
+  .row>.karten-container:nth-child(odd)>.reiter-wrapper-home>.reiter-weis {
+    border-bottom-color: #d9d9d9;
+  }
+
+  .row>.karten-container:nth-child(odd)>.reiter-wrapper-home>.reiter-weis > * {
+    background-color: #d9d9d9;
+  }
+
+  .row>.karten-container:nth-child(odd)>.karten-wrapper {
+    background-color: #d9d9d9;
+  }
+}
+
+
+/********************/
+/**** Bäkewiese *****/
+/********************/
 .bgimage-baekewiese {
   background-image: url("/wp-content/uploads/static/10_Baekewiese.jpg");
   padding-bottom: 45%;
@@ -131,16 +168,21 @@ img.banner {
   background-position: right bottom;
 }
 
-@media (max-width: 767px) {
-  .navbar-default .navbar-nav li.active {
-    background-color: #3ab200;
-  }
+
+/********************/
+/** Weidenkirche ****/
+/********************/
+.wrapper-altar {
+  margin-bottom: 50px;
 }
 
-@media (min-width: 1200px) {
-  .fullpannel {
-    margin-left: -10vw;
-    margin-right: -10vw;
+.wrapper-altar * {
+  margin: 0 auto 0 auto;
+}
+
+@media (min-width: 767px) {
+  .wrapper-altar {
+    height: 310px;
   }
 }
 
@@ -172,140 +214,19 @@ img.banner {
   z-index: 2;
 }
 
-.home-bk-thumb {
-  margin: auto;
-  max-width: 100%;
-  max-height: 81%;
-  border: 1px solid #999999;
-}
-
-div.home-logo-wrapper {
-  position: relative;
-  margin: auto;
-  width: 300px;
-  display: inline-block;
-}
-
-div.home-logo-img-wrapper {
-  float: left;
-  width: 40%;
-}
-
-img.home-logo {
-  height: auto;
-  margin: auto;
-}
-
-img.home-logo-baekewiese {
-  width: 98px;
-}
-
-img.home-logo-weidenkirche {
-  width: 106px;
-}
-
-img.home-logo-rappoltengruen {
-  width: 109px;
-}
-
-.logo-caption {
-  font-size: 25px;
-  font-family: quadraat-regular;
-  margin: 0;
-  float:left;
-  position: absolute;
-  top: 35%;
-  left: 43%;
-}
-
-.karten-wrapper-breit > .karten-wrapper-inner {
-  margin: 0;
-}
-
-.karten-wrapper-breit > .karten-wrapper-inner > div {
-  height: 100%;
-}
-
-.gm-style-iw * {
-    display: block;
-    width: auto;
-}
-
-.gm-style-iw h4, .gm-style-iw p {
-    margin: 0;
-    padding: 0;
-}
-
-.gm-style-iw a {
-    color: #4272db;
-}
-
-@media (max-width: 767px) {
-  .row>.karten-container:nth-child(even) {
-    background-color: #d9d9d9;
-  }
-
-  .row>.karten-container:nth-child(odd)>.reiter-wrapper-home>.reiter-weis {
-    border-bottom-color: #d9d9d9;
-  }
-
-  .row>.karten-container:nth-child(odd)>.reiter-wrapper-home>.reiter-weis > * {
-    background-color: #d9d9d9;
-  }
-
-  .row>.karten-container:nth-child(odd)>.karten-wrapper {
-    background-color: #d9d9d9;
-  }
-}
-
-
-.logo-container {
-  height: 200px;
-}
-
-.logo-container div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-}
-
-.logo-container img {
-  max-height: 100%;
-}
-
-/********************/
-/** Weidenkirche ****/
-/********************/
-
-.wrapper-altar {
-  margin-bottom: 50px;
-}
-
-.wrapper-altar * {
-  margin: 0 auto 0 auto;
-}
-
-@media (min-width: 767px) {
-  .wrapper-altar {
-    height: 310px;
-  }
-}
-
 /********************/
 /** Reservierung ****/
 /********************/
-
 @media (max-width: 767px) {
   .btn-reserverierung {
     margin-bottom: 30px;
   }
 }
 
+
 /********************/
 /****** Footer ******/
 /********************/
-
 .reiter-footer {
   border-bottom-color: #6c927a !important;
   height: 30px;
