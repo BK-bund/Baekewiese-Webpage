@@ -16,22 +16,113 @@ Version:      0.1
 }
 */
 
+.warning-text {
+  color: #cc0000;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
 .btn-wiese {
   color: #fff;
   background-color: #8ace00;
   border-color: #8ace00;
 }
 
+.sticky-bottom {
+	position: absolute;
+	bottom: 0;
+}
+
 /********************/
 /******* Home *******/
 /********************/
+
+
+.karten-wrapper {
+  height: 630px;
+  background-color: #edffdd;
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .karten-wrapper {
+    height: 750px;
+  }
+}
+
+.karten-wrapper .btn {
+  min-width: unset;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .reiter-wrapper-home .reiter {
+    border-bottom-color: #edffdd;
+  }
+
+  .reiter-wrapper-home .reiter * {
+    background-color: #edffdd;
+  }
+
+  .ai1ec-agenda-widget-view {
+    background-color: #edffdd;
+  }
+
+  .ai1ec-agenda-widget-view .ai1ec-date, .ai1ec-agenda-widget-view .ai1ec-event > a  {
+    background: transparent;
+  }
+
+  .ai1ec-date-title {
+    background: #ffffff !important;
+  }
+}
+
+.card-baekewiese, .card-weidenkirche {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+}
+
+.card-baekewiese {
+  background-image: url("/wp-content/uploads/static/00_bae-Fussball-03.png");
+}
+
+.card-weidenkirche {
+  background-image: url("/wp-content/uploads/static/00_bae-WK-03.png");
+}
+
+.card-baekewiese .karten-wrapper-inner, .card-weidenkirche .karten-wrapper-inner {
+  height: 100%;
+}
+
+@media (max-width: 767px) {
+  .card-baekewiese, .card-weidenkirche {
+    height: 550px;
+    background-color: white !important;
+  }
+  .reiter-wrapper-home-weidenkirche {
+    margin-top: -30px;
+  }
+  .reiter-wrapper-home-weidenkirche .reiter-weis {
+    border-bottom-color: #ffffff !important;;
+  }
+  .reiter-wrapper-home-weidenkirche .reiter-weis * {
+    background-color: #ffffff !important;;
+  }
+}
+
 img.banner {
   width: 380px;
 }
 
+/********************/
+/******* Home *******/
+/********************/
+
 .bgimage-baekewiese {
   background-image: url("/wp-content/uploads/static/10_Baekewiese.jpg");
-  padding-bottom: 44%;
+  padding-bottom: 45%;
 }
 
 .bgimage-gelaende {
@@ -76,11 +167,10 @@ img.banner {
     left: 0;
     transform: translate3d(0, 0, 0);
 }
-    
+
 .carousel-fade .carousel-control {
   z-index: 2;
 }
-
 
 .home-bk-thumb {
   margin: auto;
@@ -135,7 +225,6 @@ img.home-logo-rappoltengruen {
 .karten-wrapper-breit > .karten-wrapper-inner > div {
   height: 100%;
 }
-}
 
 .gm-style-iw * {
     display: block;
@@ -155,9 +244,9 @@ img.home-logo-rappoltengruen {
   .row>.karten-container:nth-child(even) {
     background-color: #d9d9d9;
   }
-  
+
   .row>.karten-container:nth-child(odd)>.reiter-wrapper-home>.reiter-weis {
-    border-bottom: 30px solid #d9d9d9; 
+    border-bottom-color: #d9d9d9;
   }
 
   .row>.karten-container:nth-child(odd)>.reiter-wrapper-home>.reiter-weis > * {
@@ -185,12 +274,61 @@ img.home-logo-rappoltengruen {
   max-height: 100%;
 }
 
-/*
-@media (max-width: 767px) {
-  .logo-container {
-    margin: 100px 0;
-    height: auto;
-    display: -webkit-box;
+/********************/
+/** Weidenkirche ****/
+/********************/
+
+.wrapper-altar {
+  margin-bottom: 50px;
+}
+
+.wrapper-altar * {
+  margin: 0 auto 0 auto;
+}
+
+@media (min-width: 767px) {
+  .wrapper-altar {
+    height: 310px;
   }
 }
-*/
+
+/********************/
+/** Reservierung ****/
+/********************/
+
+@media (max-width: 767px) {
+  .btn-reserverierung {
+    margin-bottom: 30px;
+  }
+}
+
+/********************/
+/****** Footer ******/
+/********************/
+
+.reiter-footer {
+  border-bottom-color: #6c927a !important;
+  height: 30px;
+}
+
+.reiter-footer > *, .reiter-footer > *:hover, .reiter-footer > *:focus {
+  background-color: #6c927a !important;
+  color: white;
+}
+
+.reiter-wrapper .active {
+  border-bottom: 32px solid #2b5235 !important;
+  height: 32px;
+}
+
+.reiter-wrapper .active > * {
+  background-color: #2b5235 !important;
+}
+
+.footer-home .reiter-container-footer {
+  margin-top: -39px;
+}
+
+button.datenschutz-toggle * {
+  filter: invert(100%);
+}
