@@ -2,25 +2,25 @@
 
 // ======= Konfiguration:
 
-$mailTo = 'vermietung@baekewiese.de';
-$mailFrom = '"Reservierungsanfrage" <webmaster@baekewiese.de>';
-$mailSubject    = 'Neue Reservierungsanfrage: ';
-$returnPage = '/reservierung/success/';
-$returnErrorPage = '/reservierung/failure/';
+$returnPage           = "/reservierung/success/";
+$returnErrorPage      = "/reservierung/failure/";
+$cc_mailTo            = "vermietung@baekewiese.de";
+//$cc_mailTo            = "admin@cjf-berlin.de";
+$cc_mailFrom          = "Baekewiesen Vermietungen <vermietung@baekewiese.de>";
+$cc_mailSubject       = "Neue Reservierungsanfrage: ";
+$customer_mailSubject = "Deine Reservierungsanfrage für die Bäkewiese";
+$customer_mailText    = "Vielen Dank für deine Reservierungsanfrage. Wir melde uns in Kürze bei dir.\nDeine Anfrage war:\n\n";
 $mailText = "";
 
-$header  = "MIME-Version: 1.0\n";
+
+$header  = "From:" .$cc_mailFrom ."\n";
+//$header .= "Reply-To: Baekewiesen Vermietungen <vermietung@baekewiese.de> \n";
+$header .= "MIME-Version: 1.0\n";
+$header .= "Content-Type: text/plain; charset=utf-8\n";
 //$header .= "Content-type: text/html;\n";// "; charset=iso-8859-1\r\n";
-$header .="Content-Type: text/plain; charset=utf-8\n";
-$header .= "From:" .$mailFrom ."\n";
+
 
 $error = False;
-/*
-if(isset($_POST['g-recaptcha-response'])){
-  $captcha=$_POST['g-recaptcha-response'];
-}
-*/
-
 // ======= Text der Mail aus den Formularfeldern erstellen:
 
 // Wenn Daten mit method="post" versendet wurden:
@@ -28,22 +28,25 @@ if(isset($_POST)) {
    // alle Formularfelder der Reihe nach durchgehen:
    foreach($_POST as $name => $value) {
      if($name == "Organisation" && $value != "")  {
-       $mailSubject .= $value . ",";
+       $cc_mailSubject .= $value . ",";
      }
      if($name == "Vorname")  {
-       $mailSubject .= $value . " ";
+       $cc_mailSubject .= $value . " ";
      }
      if($name == "Nachname")  {
-       $mailSubject .= $value;
+       $cc_mailSubject .= $value;
      }
      if($name == "E-Mail_1") {
-       $mailCustomer = $value;
+       $customer_mailTo = $value;
      }
-     if($name == "E-Mail_2" && $value != $mailCustomer) {
+     if($name == "E-Mail_2" && $value != $customer_mailTo) {
        $error = True;
      }
       // Wenn der Feldwert aus mehreren Werten besteht:
-      // (z.B. <select multiple>)
+      // (z.B. <select multiple>
+      if ($name == "E-Mail_2") {
+        continue;
+      }
       if(is_array($value)) {
           // "Feldname:" und Zeilenumbruch dem Mailtext hinzufügen
           $mailText .= $name . ":\n";
@@ -56,6 +59,9 @@ if(isset($_POST)) {
       } // ENDE: if
       // Wenn der Feldwert ein einzelner Feldwert ist:
       else {
+          if ($name == "E-Mail_1") {
+            $name = "E-Mail";
+          }
           // "Feldname:", Wert und Zeilenumbruch dem Mailtext hinzufügen
           $mailText .= $name . ": " . $value . "\n";
       } // ENDE: else
@@ -71,35 +77,19 @@ if(isset($_POST)) {
  }
 
 // ======= Mailversand
-
- /*
- if(!$captcha){
-   echo '<h2>Please check the the captcha form.</h2>';
-   exit;
- }
-
-
- $secretKey = "6LfA1R4TAAAAAGzh344G_JH0Q5KBu_byskTGsA7i";
- $ip = $_SERVER['REMOTE_ADDR'];
- $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secretKey."&response=".$captcha."&remoteip=".$ip);
- $responseKeys = json_decode($response,true);
- if(intval($responseKeys["success"]) !== 1) {
-   echo '<h2>You are spammer ! Get the @$%K out</h2>';
-   exit;
- }
- */
-
  if($error) {
    header("Location: " . $returnErrorPage);
    exit;
  }
+
  // Mail versenden und Versanderfolg merken
- $mailSent = @mail($mailTo, $mailSubject, $mailText, $header);
+ $mailSent1 = @mail($cc_mailTo, $cc_mailSubject, $mailText, $header);
+ $mailSent2 = @mail($customer_mailTo, $customer_mailSubject, $customer_mailText . $mailText, $header);
 
  // ======= Return-Seite an den Browser senden
 
  // Wenn der Mailversand erfolgreich war:
- if($mailSent == TRUE) {
+ if($mailSent1 == TRUE && $mailSent2 == TRUE) {
    // Seite "Formular verarbeitet" senden:
    header("Location: " . $returnPage);
  }
