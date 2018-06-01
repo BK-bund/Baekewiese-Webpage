@@ -74,8 +74,8 @@ img.banner {
     background-color: #edffdd;
   }
 
-  .ai1ec-agenda-widget-view .ai1ec-date, .ai1ec-agenda-widget-view .ai1ec-event > a  {
-    background: transparent;
+  .ai1ec-agenda-widget-view .ai1ec-date, .ai1ec-agenda-widget-view .ai1ec-event > a, .ai1ec-today  {
+    background: transparent !important;
   }
 
   .ai1ec-date-title {
@@ -259,8 +259,12 @@ img.banner {
   background-color: #2b5235 !important;
 }
 
+.footer-home {
+  margin-top: -32px;
+}
+
 .footer-home .reiter-container-footer {
-  margin-top: -39px;
+  margin-top: 0;
 }
 
 button.datenschutz-toggle * {
