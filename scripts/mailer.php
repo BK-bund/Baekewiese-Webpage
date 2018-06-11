@@ -6,15 +6,14 @@ $returnErrorPage        = "/reservierung/failure/";
 $cc_mailTo              = "vermietung@baekewiese.de";
 $admin_mailTo           = "admin@cjf-berlin.de";
 $sendCCToAdmin          = True;
-$cc_mailFrom            = "Baekewiesen Vermietungen <vermietung@baekewiese.de>";
+$mailFrom               = "Baekewiesen Vermietungen <vermietung@baekewiese.de>";
 $cc_mailSubject         = "Neue Reservierungsanfrage: ";
 $customer_mailSubject   = "Deine Reservierungsanfrage für die Bäkewiese";
 $customer_mailText      = "Vielen Dank für deine Reservierungsanfrage für die Bäkewiese! Wir melde uns in Kürze bei dir.\n\nDeine Anfrage war:\n";
 
-$header  = "From:" .$cc_mailFrom ."\n";
+$header  = "From:" .$mailFrom ."\n";
 $header .= "MIME-Version: 1.0\n";
 $header .= "Content-Type: text/plain; charset=utf-8\n";
-//$header .= "Content-type: text/html;\n";// "; charset=iso-8859-1\r\n";
 
 // Initialisiere Variablen
 $mailText = "";
