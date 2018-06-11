@@ -3,13 +3,13 @@
 // ======= Konfiguration:
 $returnPage             = "/reservierung/success/";
 $returnErrorPage        = "/reservierung/failure/";
-$cc_mailTo              = "vermietung@baekewiese.de";
-$admin_mailTo           = "admin@cjf-berlin.de";
+$mailTo_cc              = "vermietung@baekewiese.de";
+$mailTo_admin           = "admin@cjf-berlin.de";
 $sendCCToAdmin          = True;
 $mailFrom               = "Baekewiesen Vermietungen <vermietung@baekewiese.de>";
-$cc_mailSubject         = "Neue Reservierungsanfrage: ";
-$customer_mailSubject   = "Deine Reservierungsanfrage für die Bäkewiese";
-$customer_mailText      = "Vielen Dank für deine Reservierungsanfrage für die Bäkewiese! Wir melde uns in Kürze bei dir.\n\nDeine Anfrage war:\n";
+$mailSubject_cc         = "Neue Reservierungsanfrage: ";
+$mailSubject_customer   = "Deine Reservierungsanfrage für die Bäkewiese";
+$mailText_customer      = "Vielen Dank für deine Reservierungsanfrage für die Bäkewiese! Wir melde uns in Kürze bei dir.\n\nDeine Anfrage war:\n";
 
 $header  = "From:" .$mailFrom ."\n";
 $header .= "MIME-Version: 1.0\n";
@@ -25,18 +25,18 @@ if(isset($_POST)) {
    // alle Formularfelder der Reihe nach durchgehen:
    foreach($_POST as $name => $value) {
      if($name == "Organisation" && $value != "")  {
-       $cc_mailSubject .= $value . ",";
+       $mailSubject_cc .= $value . ", ";
      }
      if($name == "Vorname")  {
-       $cc_mailSubject .= $value . " ";
+       $mailSubject_cc .= $value . " ";
      }
      if($name == "Nachname")  {
-       $cc_mailSubject .= $value;
+       $mailSubject_cc .= $value;
      }
      if($name == "E-Mail_1") {
-       $customer_mailTo = $value;
+       $mailTo_customer = $value;
      }
-     if($name == "E-Mail_2" && $value != $customer_mailTo) {
+     if($name == "E-Mail_2" && $value != $mailTo_customer) {
        $error = True;
      }
      if ($name == "E-Mail_2" || $name == "Nutzungsbedingungen") {
@@ -80,12 +80,12 @@ if(isset($_POST)) {
  }
 
  // Mail versenden und Versanderfolg merken
- $mailSent1 = @mail($cc_mailTo, $cc_mailSubject, $mailText, $header);
- $mailSent2 = @mail($customer_mailTo, $customer_mailSubject, $customer_mailText . $mailText, $header);
+ $mailSent1 = @mail($mailTo_cc, $mailSubject_cc, $mailText, $header);
+ $mailSent2 = @mail($mailTo_customer, $mailSubject_customer, $mailText_customer . $mailText, $header);
 
 // Sende eine Kopie an den Admin
 if($sendCCToAdmin) {
-  @mail($admin_mailTo, $cc_mailSubject, $mailText, $header);
+  @mail($mailTo_admin, $mailSubject_cc, $mailText, $header);
 }
 
  // ======= Return-Seite an den Browser senden
