@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.2
+- Add option to cc an admin in mailer
+- Fix bugs with mailer
+- Cleanup code
+
 ## 1.1.1
 - Fix two footer bugs
 
